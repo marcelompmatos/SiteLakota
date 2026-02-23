@@ -1,5 +1,5 @@
-// Base da API (ajuste conforme seu domínio/rota)
-const apiBase = "http://marcelompm.somee.com/PagtoMercadoPago"; 
+// Base da API (proxy HTTPS via Netlify Functions)
+const apiBase = "/.netlify/functions/proxyAgenda";
 
 // Tipo de agenda que você quer filtrar
 const tipoAgenda = 1; 
@@ -10,7 +10,7 @@ async function carregarAgendamentos(tipo) {
     container.innerHTML = "<p>Carregando agendamentos...</p>";
 
     try {
-        const response = await fetch(`${apiBase}/api/agenda?tipo=${tipo}`, {
+        const response = await fetch(`${apiBase}?tipo=${tipo}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
