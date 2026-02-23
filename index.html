@@ -290,17 +290,18 @@ footer p{margin-top:10px;font-size:14px;opacity:0.8;line-height:1.5;}
 </div>
 </section>
 
+
+
+
 <section id="agenda" class="section">
-<div class="container">
-<h2>Agenda</h2>
-<div class="card">
-<span class="date-badge">22 a 24 Março 2026</span>
-<h3>Retiro de Cura e Reconexão</h3>
-<p>Imersão de 3 dias com práticas integrativas e momentos de introspecção.</p>
-<p><strong>Vagas Limitadas: 20 participantes</strong></p>
-<a class="btn" href="https://wa.me/5511930692059" target="_blank">Reservar Vaga pelo WhatsApp</a>
-</div>
-</div>
+  <div class="container">
+    <h2>Agenda</h2>
+    
+    <!-- Container onde os cards serão inseridos dinamicamente -->
+    <div id="agendamentosCards" class="cards-container">
+      <p>Carregando agendamentos...</p>
+    </div>
+  </div>
 </section>
 
 <section id="servicos" class="section" style="background:#fff;">
@@ -377,6 +378,6 @@ scrollTopBtn.addEventListener("click", function(e) {
     window.scrollTo({top: 0, behavior: 'smooth'});
 });
 </script>
-
+<script src="Js/site.js"></script>
 </body>
 </html>
