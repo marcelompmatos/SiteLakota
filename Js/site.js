@@ -7,6 +7,9 @@ const apiBase = "/.netlify/functions/proxyAgenda";
 const tipoAgenda = 1; 
 carregarAgendamentos(tipoAgenda);
 
+/**
+ * Função para carregar agendamentos da API
+ */
 async function carregarAgendamentos(tipo) { 
     const container = document.getElementById("agendamentosCards");
     container.innerHTML = "<p>Carregando agendamentos...</p>";
@@ -36,6 +39,18 @@ async function carregarAgendamentos(tipo) {
     }
 }
 
+/**
+ * Converte string YYYY-MM-DD em Date no fuso UTC
+ */
+function parseDateYYYYMMDD(str) {
+    if (!str) return null;
+    const [year, month, day] = str.split("-");
+    return new Date(Date.UTC(year, month - 1, day));
+}
+
+/**
+ * Renderiza os cards de agendamento
+ */
 function renderAgendamentos(agendamentos) {
     const container = document.getElementById("agendamentosCards");
     container.innerHTML = "";
@@ -44,20 +59,28 @@ function renderAgendamentos(agendamentos) {
         const card = document.createElement("div");
         card.classList.add("card");
 
-        const dataObj = a.data ? new Date(a.data) : null;
-        const dataFormatada = dataObj ? dataObj.toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric"
-        }) : "Data não informada";
+        // Formata a data corretamente
+        const dataObj = parseDateYYYYMMDD(a.data);
+        const dataFormatada = dataObj 
+            ? dataObj.toLocaleDateString("pt-BR", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+              })
+            : "Data não informada";
 
+        // Título, hora e valor
         const titulo = a.evento || "Evento sem título";
         const hora = a.hora ? ` - ${a.hora}` : "";
         const valor = a.valor !== undefined ? `Valor: R$ ${a.valor}` : "Valor não informado";
 
-        const mensagemWhatsApp = encodeURIComponent(`Olá, quero reservar vaga para "${titulo}" em ${dataFormatada}${hora}`);
+        // Link WhatsApp com mensagem dinâmica
+        const mensagemWhatsApp = encodeURIComponent(
+            `Olá, quero reservar vaga para "${titulo}" em ${dataFormatada}${hora}`
+        );
         const waLink = `https://wa.me/5511930692059?text=${mensagemWhatsApp}`;
 
+        // Monta o card
         card.innerHTML = `
             <span class="date-badge">${dataFormatada}${hora}</span>
             <h3>${titulo}</h3>
