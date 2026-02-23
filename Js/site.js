@@ -40,17 +40,27 @@ async function carregarAgendamentos(tipo) {
 }
 
 /**
- * Converte data e hora em objeto Date no fuso UTC
- * @param {string} dateStr - string YYYY-MM-DD
+ * Cria objeto Date unindo data ISO e hora separada
+ * @param {string} isoDateStr - string ISO: "YYYY-MM-DDTHH:MM:SSZ" ou "YYYY-MM-DD"
  * @param {string} timeStr - string HH:MM
  * @returns {Date|null}
  */
-function parseDateTime(dateStr, timeStr) {
-    if (!dateStr) return null;
-    if (!timeStr) timeStr = "00:00"; // hora padrão caso não exista
-    const [year, month, day] = dateStr.split("-");
-    const [hours, minutes] = timeStr.split(":");
-    return new Date(Date.UTC(year, month - 1, day, hours, minutes));
+function parseDateTime(isoDateStr, timeStr) {
+    if (!isoDateStr) return null;
+
+    // Extrai apenas a parte da data
+    const datePart = isoDateStr.split("T")[0]; // "YYYY-MM-DD"
+    let finalStr = datePart;
+
+    // Adiciona hora se existir
+    if (timeStr) {
+        finalStr += `T${timeStr}:00`; // "YYYY-MM-DDTHH:MM:00"
+    } else {
+        finalStr += "T00:00:00";
+    }
+
+    const dateObj = new Date(finalStr);
+    return isNaN(dateObj.getTime()) ? null : dateObj;
 }
 
 /**
@@ -76,7 +86,7 @@ function renderAgendamentos(agendamentos) {
             })
             : "Data não informada";
 
-        // Título, hora e valor
+        // Título e valor
         const titulo = a.evento || "Evento sem título";
         const valor = a.valor !== undefined ? `Valor: R$ ${a.valor}` : "Valor não informado";
 
