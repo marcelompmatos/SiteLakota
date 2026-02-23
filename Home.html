@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel ADM - Céu Irmão Lakota</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/adm.css">
+</head>
+
+<body>
+<div class="adm-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-area">
+            <img src="images/xamanismo_logo.png" class="logo" alt="Logo">
+            <h2>Céu Irmão Lakota</h2>
+            <p>Painel Administrativo</p>
+        </div>
+
+        <nav class="menu">
+            <a href="#" class="menu-item" onclick="event.preventDefault(); mostrarDashboard()">🏠 Dashboard</a>
+            <a href="#" class="menu-item" onclick="event.preventDefault(); mostrarUsuarios()">👤 Usuários</a>
+            <a href="#" class="menu-item" onclick="event.preventDefault(); mostrarAgendamentos()">📅 Agendamentos</a>
+            <a href="#" class="menu-item" onclick="event.preventDefault(); mostrarEventos()">📅 Eventos</a>
+            <a href="#" class="menu-item" onclick="event.preventDefault(); mostrarKambo()">🐸 Kambo</a>
+            <a href="#" class="menu-item" onclick="event.preventDefault(); mostrarBarras()">🧠 Barras Access</a>
+            <a href="#" class="menu-item logout" onclick="logout(event)">🚪 Sair</a>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="content">
+        <header class="topbar">
+            <button type="button" class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <h1 id="pageTitle">Dashboard</h1>
+        </header>
+
+        <section class="page-content" id="pageContent">
+
+            <!-- Dashboard -->
+            <div class="dashboard" id="dashboardView">
+                <h1 class="dashboard-title">🌌 Bem-vindo ao Painel Céu Irmão Lakota</h1>
+                <p class="dashboard-subtitle">
+                    Use o menu lateral para gerenciar <strong>Usuários</strong>, <strong>Agendamentos</strong>,
+                    <strong>Eventos</strong>, <strong>Kambo</strong> e <strong>Barras Access</strong>.
+                </p>
+
+                <div class="dashboard-summary">
+                    <div class="summary-card">
+                        <div class="summary-icon">👤</div>
+                        <div class="summary-label">Usuários</div>
+                        <div class="summary-value" id="totalUsuarios">0</div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="summary-icon">📅</div>
+                        <div class="summary-label">Agendamentos</div>
+                        <div class="summary-value" id="totalAgendamentos">0</div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="summary-icon">📅</div>
+                        <div class="summary-label">Eventos</div>
+                        <div class="summary-value" id="totalEventos">0</div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="summary-icon">🐸</div>
+                        <div class="summary-label">Kambo</div>
+                        <div class="summary-value" id="totalKambo">0</div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="summary-icon">🧠</div>
+                        <div class="summary-label">Barras Access</div>
+                        <div class="summary-value" id="totalBarras">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usuários -->
+            <div class="page" id="usuariosView" style="display:none;">
+            <h2 class="page-title">👤 Usuários</h2>
+
+            <!-- Barra de ações -->
+            <div class="toolbar">
+                <input type="text" id="buscarUsuario" placeholder="🔍 Buscar usuário..." oninput="filtrarUsuarios()">
+            </div>
+
+            <!-- Tabela (Desktop) -->
+            <div class="table-container desktop-only">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usuariosTabela"></tbody>
+                </table>
+            </div>
+
+    <!-- Cards (Mobile) -->
+    <div id="usuariosCards" class="mobile-only"></div>
+</div>
+
+
+            <!-- Agendamentos -->
+           <div class="page" id="agendamentosView" style="display:none;">
+    <h2 class="page-title">📅 Agendamentos</h2>
+
+    <!-- Barra de ações -->
+    <div class="toolbar">
+        <input type="text" id="buscarAgendamento" placeholder="🔍 Buscar cliente..." oninput="filtrarAgendamentos()">
+        <select id="filtroStatus" onchange="filtrarAgendamentos()">
+            <option value="">Todos</option>
+            <option value="Confirmado">Confirmado</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Cancelado">Cancelado</option>
+        </select>
+    </div>
+
+    <!-- Tabela (Desktop) -->
+    <div class="table-container desktop-only">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="agendamentosTabela"></tbody>
+        </table>
+    </div>
+
+    <!-- Cards (Mobile) -->
+    <div id="agendamentosCards" class="mobile-only"></div>
+</div>
+
+
+            <!-- Eventos -->
+            <div class="page" id="eventosView" style="display:none;">
+                <h2 class="page-title">📅 Eventos</h2>
+                <p>Em breve você poderá gerenciar eventos aqui.</p>
+            </div>
+
+            <!-- Kambo -->
+            <div class="page" id="kamboView" style="display:none;">
+                <h2 class="page-title">🐸 Kambo</h2>
+                <p>Em breve você poderá gerenciar aplicações de Kambo aqui.</p>
+            </div>
+
+            <!-- Barras Access -->
+            <div class="page" id="barrasView" style="display:none;">
+                <h2 class="page-title">🧠 Barras Access</h2>
+                <p>Em breve você poderá gerenciar sessões de Barras Access aqui.</p>
+            </div>
+
+        </section>
+    </main>
+</div>
+
+<footer class="footer">
+    © 2026 - Painel Administrativo Céu Irmão Lakota
+</footer>
+
+<script src="Js/adm.js"></script>
+</body>
+</html>
