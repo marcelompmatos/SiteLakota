@@ -1,6 +1,7 @@
-import fetch from "node-fetch";
+// netlify/functions/proxyAgenda.js
+const fetch = require("node-fetch");
 
-export async function handler(event, context) {
+exports.handler = async function(event, context) {
   const tipo = event.queryStringParameters.tipo || 1;
 
   try {
@@ -17,4 +18,4 @@ export async function handler(event, context) {
   } catch (err) {
     return { statusCode: 500, body: "Erro interno: " + err.message };
   }
-}
+};
