@@ -1,5 +1,5 @@
 // Base da API (proxy HTTPS via Netlify Functions)
-const apiBase = "/.netlify/functions/proxyAgenda";
+const apiBase = "/Js/functions/proxyAgenda.js";
 
 // Tipo de agenda que você quer filtrar
 const tipoAgenda = 1; 
