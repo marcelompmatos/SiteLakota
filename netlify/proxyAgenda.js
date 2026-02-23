@@ -5,7 +5,6 @@ exports.handler = async function(event, context) {
   const tipo = event.queryStringParameters.tipo || 1;
 
   try {
-    // Chamada para sua API HTTP
     const response = await fetch(`http://marcelompm.somee.com/PagtoMercadoPago/api/agenda?tipo=${tipo}`);
     
     if (!response.ok) {
