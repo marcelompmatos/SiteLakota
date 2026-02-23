@@ -1,5 +1,7 @@
-// Base da API (proxy HTTPS via Netlify Functions)
-const apiBase = "/.netlify/functions/proxyAgenda"; // ✅ correto
+// js/site.js
+
+// Endpoint HTTPS da função Netlify
+const apiBase = "/.netlify/functions/proxyAgenda";
 
 // Tipo de agenda que você quer filtrar
 const tipoAgenda = 1; 
@@ -12,9 +14,7 @@ async function carregarAgendamentos(tipo) {
     try {
         const response = await fetch(`${apiBase}?tipo=${tipo}`, {
             method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
+            headers: { "Content-Type": "application/json" }
         });
 
         if (!response.ok) {
@@ -38,13 +38,12 @@ async function carregarAgendamentos(tipo) {
 
 function renderAgendamentos(agendamentos) {
     const container = document.getElementById("agendamentosCards");
-    container.innerHTML = ""; // limpa o conteúdo antes de renderizar
+    container.innerHTML = "";
 
     agendamentos.forEach(a => {
         const card = document.createElement("div");
         card.classList.add("card");
 
-        // Formatar a data para DD/MM/YYYY
         const dataObj = a.data ? new Date(a.data) : null;
         const dataFormatada = dataObj ? dataObj.toLocaleDateString("pt-BR", {
             day: "2-digit",
@@ -56,7 +55,6 @@ function renderAgendamentos(agendamentos) {
         const hora = a.hora ? ` - ${a.hora}` : "";
         const valor = a.valor !== undefined ? `Valor: R$ ${a.valor}` : "Valor não informado";
 
-        // Link do WhatsApp com mensagem dinâmica
         const mensagemWhatsApp = encodeURIComponent(`Olá, quero reservar vaga para "${titulo}" em ${dataFormatada}${hora}`);
         const waLink = `https://wa.me/5511930692059?text=${mensagemWhatsApp}`;
 
