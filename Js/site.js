@@ -76,11 +76,11 @@ function renderAgendamentos(agendamentos) {
             })
             : "Data não informada";
 
-        // Título e valor
+        // Título, hora e valor
         const titulo = a.evento || "Evento sem título";
         const valor = a.valor !== undefined ? `Valor: R$ ${a.valor}` : "Valor não informado";
 
-        // Link WhatsApp
+        // Link WhatsApp com data e hora
         const mensagemWhatsApp = encodeURIComponent(
             `Olá, quero reservar vaga para "${titulo}" em ${dataFormatada}`
         );
