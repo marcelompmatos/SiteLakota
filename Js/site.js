@@ -1,4 +1,5 @@
-const apiBase = "http://marcelompm.somee.com/PagtoMercadoPago"; // ajuste se necessário
+// Base da API (ajuste conforme seu domínio/rota)
+const apiBase = "http://marcelompm.somee.com/PagtoMercadoPago"; 
 
 // Tipo de agenda que você quer filtrar
 const tipoAgenda = 1; 
@@ -31,7 +32,7 @@ async function carregarAgendamentos(tipo) {
 
     } catch (error) {
         console.error("Erro ao carregar agendamentos:", error);
-        container.innerHTML = "<p>Erro ao carregar agendamentos.</p>";
+        container.innerHTML = "<p>Erro ao carregar agendamentos. Tente novamente mais tarde.</p>";
     }
 }
 
@@ -43,23 +44,27 @@ function renderAgendamentos(agendamentos) {
         const card = document.createElement("div");
         card.classList.add("card");
 
-        // Formatar a data para formato legível (DD/MM/YYYY)
-        const dataObj = new Date(a.data);
-        const dataFormatada = dataObj.toLocaleDateString("pt-BR", {
+        // Formatar a data para DD/MM/YYYY
+        const dataObj = a.data ? new Date(a.data) : null;
+        const dataFormatada = dataObj ? dataObj.toLocaleDateString("pt-BR", {
             day: "2-digit",
             month: "long",
             year: "numeric"
-        });
+        }) : "Data não informada";
 
         const titulo = a.evento || "Evento sem título";
         const hora = a.hora ? ` - ${a.hora}` : "";
-        const valor = a.valor !== undefined ? `Valor: R$ ${a.valor}` : "";
+        const valor = a.valor !== undefined ? `Valor: R$ ${a.valor}` : "Valor não informado";
+
+        // Link do WhatsApp com mensagem dinâmica
+        const mensagemWhatsApp = encodeURIComponent(`Olá, quero reservar vaga para "${titulo}" em ${dataFormatada}${hora}`);
+        const waLink = `https://wa.me/5511930692059?text=${mensagemWhatsApp}`;
 
         card.innerHTML = `
             <span class="date-badge">${dataFormatada}${hora}</span>
             <h3>${titulo}</h3>
             <p>${valor}</p>
-            <a class="btn" href="https://wa.me/5511930692059" target="_blank">Reservar Vaga pelo WhatsApp</a>
+            <a class="btn" href="${waLink}" target="_blank">Reservar Vaga pelo WhatsApp</a>
         `;
 
         container.appendChild(card);
