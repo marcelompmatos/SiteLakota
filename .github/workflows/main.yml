@@ -1,4 +1,4 @@
-name: 🚀 Deploy .NET to Somee
+name: Deploy via FTP
 
 on:
   push:
@@ -6,29 +6,30 @@ on:
       - main
 
 jobs:
-  build-deploy:
+  ftp-deploy:
+    name: Upload via FTP
     runs-on: ubuntu-latest
-    environment: ftp_host
 
     steps:
-      - name: 🚚 Checkout
+      - name: Checkout código
         uses: actions/checkout@v4
 
-      - name: 🔧 Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          dotnet-version: 8.0.x   # ajuste se for 6 ou 7
+          node-version: 18
 
-      - name: 🏗 Build & Publish
-        run: dotnet publish PagtoMercadoPago/PagtoMercadoPago.csproj -c Release -o ./publish
+      - name: Instalar dependências
+        run: npm install
 
-      - name: 📂 FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PWS }}
-          protocol: ftp
-          port: 21
-          local-dir: ./publish/
-          server-dir: /www.marcelompm.somee.com/PagtoMercadoPago/
+          server-dir: /323_323_lakota/wwwroot
+          exclude: |
+            **/.git*
+            **/.github*
+            **/node_modules/**
