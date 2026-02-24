@@ -17,7 +17,7 @@ jobs:
         with:
           server: 144.217.170.238
           username: 323_323_lakota
-          password: '@Marcelo#123'
+          password: ${{ secrets.FTP_PWS }}
           server-dir: /323_323_lakota/wwwroot/
           exclude: |
             **/.git*
