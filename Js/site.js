@@ -27,7 +27,7 @@ async function carregarAgendamentos(tipo) {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 10000);
 
-        const response = await fetch(`${apiBase}?tipo=${tipo}`, {
+        const response = await fetch(`${apiBase}/api/agenda?tipo=${tipo}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
             signal: controller.signal
