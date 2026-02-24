@@ -107,3 +107,7 @@ function renderAgendamentos(agendamentos) {
         container.appendChild(card);
     });
 }
+
+/*
+  https://www.hostazul.com.br/planos/hospedagem-de-sites
+*/
