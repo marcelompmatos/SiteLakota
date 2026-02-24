@@ -224,8 +224,26 @@ footer p{margin-top:10px;font-size:14px;opacity:0.8;line-height:1.5;}
     .hero .btn{padding:12px 30px;}
     .grid{grid-template-columns:1fr;gap:20px;} /* cards empilhados */
     .list{flex-direction:column;gap:15px;} /* diferenciais empilhados */
-    .nav-container{flex-direction:column;gap:15px;} /* menu ajustado */
+   
+.nav-container{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
 }
+
+.nav-container > div:last-child{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+nav a{
+    margin-left:0;
+}
+
+}
+
 </style>
 </head>
 <body>
