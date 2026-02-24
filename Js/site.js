@@ -3,7 +3,7 @@
 // ===============================
 
 // URL base da API (Somee)
-const apiBase = "http://marcelompm.somee.com/PagtoMercadoPago";
+const apiBase = "https://www.pagtomercadopago.ceuirmaolakota.com.br";
 
 // Tipo de agenda que você quer filtrar
 const tipoAgenda = 1;
