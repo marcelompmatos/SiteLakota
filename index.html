@@ -73,6 +73,30 @@ nav a::after{
 }
 nav a:hover::after{width:100%;}
 
+/* HAMBURGER MENU */
+.hamburger {
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+    gap:5px;
+}
+.hamburger div {
+    width:25px;
+    height:3px;
+    background:white;
+    transition:0.3s;
+}
+.nav-links {
+    display:flex;
+    gap:25px;
+}
+.nav-links.active {
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-top:10px;
+}
+
 /* HERO */
 .hero {
     height: 100vh;
@@ -225,25 +249,26 @@ footer p{margin-top:10px;font-size:14px;opacity:0.8;line-height:1.5;}
     .grid{grid-template-columns:1fr;gap:20px;} /* cards empilhados */
     .list{flex-direction:column;gap:15px;} /* diferenciais empilhados */
    
-.nav-container{
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-}
+    .nav-container{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
 
-.nav-container > div:last-child{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
+    .nav-links{
+        display:none;
+        flex-direction:column;
+        gap:15px;
+        margin-top:10px;
+        width:100%;
+    }
+    .nav-links.active{
+        display:flex;
+    }
+    .hamburger{
+        display:flex;
+    }
 }
-
-nav a{
-    margin-left:0;
-}
-
-}
-
 </style>
 </head>
 <body>
@@ -257,12 +282,17 @@ nav a{
             <strong>Espaço Céu Irmão Lakota</strong>
         </a>
     </div>
-    <div>
+    <div class="nav-links" id="navLinks">
         <a href="#sobre">Sobre</a>
         <a href="#agenda">Agenda</a>
         <a href="#servicos">Serviços</a>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#contato">Contato</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 </div>
 </nav>
@@ -312,10 +342,7 @@ nav a{
 <section id="agenda" class="section">
   <div class="container">
     <h2>Agenda</h2>
-    
-    <!-- Container onde os cards serão inseridos dinamicamente -->
     <div id="agendamentosCards" class="cards-container">
-      <!-- Mensagem inicial de carregamento -->
       <div class="loading-message">
         Carregando agendamentos...
       </div>
@@ -364,7 +391,6 @@ nav a{
 </section>
 </main>
 
-<!-- Botão voltar ao topo -->
 <a href="#" class="scroll-top" id="scrollTopBtn">&#8679;</a>
 
 <footer>
@@ -396,7 +422,15 @@ scrollTopBtn.addEventListener("click", function(e) {
     e.preventDefault();
     window.scrollTo({top: 0, behavior: 'smooth'});
 });
+
+// Hamburger menu toggle
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});
 </script>
+
 <script src="Js/site.js"></script>
 </body>
 </html>
