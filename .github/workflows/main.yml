@@ -1,4 +1,4 @@
-name: Deploy via FTP Site Lakota
+name: Deploy via FTP
 
 on:
   push:
@@ -7,28 +7,18 @@ on:
 
 jobs:
   ftp-deploy:
-    name: Upload via FTP
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Instalar dependências
-        run: npm install
+      - uses: actions/checkout@v4
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: '144.217.170.238'
-          username: '323_323_lakota'
-          password: '@Marcelo#123'
-          server-dir: /323_323_lakota/wwwroot
+          server: 144.217.170.238
+          username: 323_323_lakota
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /323_323_lakota/wwwroot/
           exclude: |
             **/.git*
             **/.github*
