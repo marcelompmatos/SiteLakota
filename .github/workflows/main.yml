@@ -25,9 +25,9 @@ jobs:
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: 144.217.170.238
-          username: 323_323_lakota
-          password: @Marcelo#123
+          server: '144.217.170.238'
+          username: '323_323_lakota'
+          password: '@Marcelo#123'
           server-dir: /323_323_lakota/wwwroot
           exclude: |
             **/.git*
