@@ -12,10 +12,16 @@
 
 <style>
 
+/* CORREÇÃO GLOBAL */
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
 body{
 font-family:Poppins,sans-serif;
 background:#0B0C10;
-margin:0;
 padding:20px;
 color:white;
 }
@@ -25,7 +31,7 @@ max-width:650px;
 margin:auto;
 }
 
-/* TITULOS DE SEÇÃO */
+/* TITULOS */
 
 .section-title{
 background:#1F2833;
@@ -35,13 +41,14 @@ text-align:center;
 font-weight:600;
 color:#66FCF1;
 margin:25px 0 15px 0;
+letter-spacing:1px;
 }
 
 /* CARD */
 
 .card{
 background:#1F2833;
-padding:18px;
+padding:20px;
 border-radius:14px;
 margin-bottom:14px;
 box-shadow:0 6px 20px rgba(0,0,0,0.3);
@@ -52,6 +59,7 @@ box-shadow:0 6px 20px rgba(0,0,0,0.3);
 label{
 display:block;
 font-size:14px;
+margin-top:12px;
 margin-bottom:6px;
 color:#C5C6C7;
 font-weight:500;
@@ -64,13 +72,27 @@ input,select,textarea{
 width:100%;
 padding:14px;
 border-radius:10px;
-border:none;
+border:1px solid #2f3a44;
 background:#0B0C10;
 color:white;
 font-size:15px;
 outline:none;
+transition:0.2s;
 
 }
+
+/* FOCUS */
+
+input:focus,
+select:focus,
+textarea:focus{
+
+border-color:#66FCF1;
+box-shadow:0 0 0 1px #66FCF1;
+
+}
+
+/* TEXTAREA */
 
 textarea{
 min-height:110px;
@@ -82,14 +104,14 @@ resize:vertical;
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:10px;
+gap:12px;
 }
 
 /* BOTÃO */
 
 button{
 
-margin-top:25px;
+margin-top:30px;
 width:100%;
 padding:16px;
 
@@ -118,8 +140,16 @@ transform:scale(1.03);
 
 @media(max-width:600px){
 
+body{
+padding:15px;
+}
+
 .grid{
 grid-template-columns:1fr;
+}
+
+.card{
+padding:18px;
 }
 
 }
@@ -157,7 +187,7 @@ IDENTIFICAÇÃO
 <input type="date" name="nascimento">
 
 <label>CPF</label>
-<input type="text" name="cpf" placeholder="CPF">
+<input type="text" name="cpf" placeholder="000.000.000-00">
 
 </div>
 
@@ -171,14 +201,12 @@ ENDEREÇO
 <label>Tipo de Logradouro</label>
 
 <select name="logradouro">
-
 <option>Rua</option>
 <option>Avenida</option>
 <option>Travessa</option>
 <option>Alameda</option>
 <option>Estrada</option>
 <option>Rodovia</option>
-
 </select>
 
 
@@ -196,14 +224,12 @@ ENDEREÇO
 <label>Complemento</label>
 
 <select name="complemento">
-
 <option>Selecione</option>
 <option>Apartamento</option>
 <option>Casa</option>
 <option>Bloco</option>
 <option>Sala</option>
 <option>Fundos</option>
-
 </select>
 
 </div>
@@ -217,7 +243,7 @@ ENDEREÇO
 <input type="text" name="cidade">
 
 <label>CEP</label>
-<input type="text" name="cep">
+<input type="text" name="cep" placeholder="00000-000">
 
 </div>
 
@@ -229,7 +255,7 @@ CONTATO
 <div class="card">
 
 <label>Telefone</label>
-<input type="tel" name="telefone">
+<input type="tel" name="telefone" placeholder="(11) 99999-9999">
 
 <label>Contato de Emergência</label>
 <input type="text" name="contato_emergencia">
@@ -252,19 +278,15 @@ ANAMNESE
 <label>Possui pressão alta?</label>
 
 <select name="pressao">
-
 <option>Não</option>
 <option>Sim</option>
-
 </select>
 
 <label>Já realizou ritual de Kambo?</label>
 
 <select name="kambo">
-
 <option>Não</option>
 <option>Sim</option>
-
 </select>
 
 </div>
