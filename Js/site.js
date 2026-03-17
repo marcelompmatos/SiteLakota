@@ -82,12 +82,18 @@ function parseDateTime(isoDateStr, timeStr) {
  * Renderiza os cards de agendamento
  */
 function renderAgendamentos(agendamentos) {
+
     const container = document.getElementById("agendamentosCards");
     container.innerHTML = "";
 
+    // Ordena por data (mais próximo primeiro)
+    agendamentos.sort((a, b) => {
+        const da = parseDateTime(a.data, a.hora);
+        const db = parseDateTime(b.data, b.hora);
+        return da - db;
+    });
+
     agendamentos.forEach(a => {
-        const card = document.createElement("div");
-        card.classList.add("card");
 
         const dataObj = parseDateTime(a.data, a.hora);
 
@@ -102,9 +108,10 @@ function renderAgendamentos(agendamentos) {
             : "Data não informada";
 
         const titulo = a.evento || "Evento sem título";
+
         const valor = a.valor !== undefined
-            ? `Valor: R$ ${Number(a.valor).toFixed(2)}`
-            : "Valor não informado";
+            ? `R$ ${Number(a.valor).toFixed(2)}`
+            : null;
 
         const mensagemWhatsApp = encodeURIComponent(
             `Olá, quero reservar vaga para "${titulo}" em ${dataFormatada}`
@@ -112,15 +119,85 @@ function renderAgendamentos(agendamentos) {
 
         const waLink = `https://wa.me/5511930692059?text=${mensagemWhatsApp}`;
 
+        const card = document.createElement("div");
+
         card.innerHTML = `
-            <span class="date-badge">${dataFormatada}</span>
-            <h3>${titulo}</h3>
-            <p>${valor}</p>
-            <a class="btn" href="${waLink}" target="_blank">
-                Reservar Vaga pelo WhatsApp
-            </a>
+            <div style="
+                background: rgba(255,255,255,0.05);
+                padding:28px;
+                border-radius:16px;
+                margin-bottom:28px;
+                border:1px solid rgba(255,255,255,0.08);
+                backdrop-filter: blur(4px);
+                transition:0.3s ease;
+            ">
+
+                <div style="
+                    font-size:14px;
+                    letter-spacing:1px;
+                    color:#bdbdbd;
+                    margin-bottom:10px;">
+                    ${dataFormatada}
+                </div>
+
+                <h3 style="
+                    font-size:22px;
+                    color:#ffffff;
+                    margin-bottom:12px;
+                    font-weight:500;">
+                    ${titulo}
+                </h3>
+
+                ${valor ? `
+                    <div style="
+                        font-size:18px;
+                        font-weight:600;
+                        color:#e8d9a0;
+                        margin-bottom:18px;">
+                        Valor: ${valor}
+                    </div>
+                ` : ""}
+
+                <a href="${waLink}" target="_blank"
+                   style="
+                   display:inline-block;
+                   padding:12px 26px;
+                   border-radius:40px;
+                   background:#25D366;
+                   color:#ffffff;
+                   text-decoration:none;
+                   font-weight:500;
+                   letter-spacing:0.5px;
+                   transition:0.3s ease;">
+                   Reservar Vaga pelo WhatsApp
+                </a>
+
+            </div>
         `;
+
+        // efeito hover elegante
+        card.firstElementChild.onmouseenter = function () {
+            this.style.transform = "translateY(-4px)";
+            this.style.background = "rgba(255,255,255,0.08)";
+        };
+
+        card.firstElementChild.onmouseleave = function () {
+            this.style.transform = "translateY(0)";
+            this.style.background = "rgba(255,255,255,0.05)";
+        };
 
         container.appendChild(card);
     });
+
+    // Caso não tenha eventos
+    if (agendamentos.length === 0) {
+        container.innerHTML = `
+            <div style="
+                text-align:center;
+                color:#cfcfcf;
+                padding:30px;">
+                Nenhum evento disponível no momento.
+            </div>
+        `;
+    }
 }
