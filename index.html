@@ -562,29 +562,48 @@
       </div>
 
       <!-- BOTÃO ANAMNESE -->
-      <div style="text-align:center; margin-top:40px;">
-        <a
-          href="LINK_DA_ANAMNESE_AQUI"
-          target="_blank"
-          style="
-            padding: 14px 30px;
-            border-radius: 40px;
-            background: #e8d9a0;
-            color: #000;
-            font-weight: 500;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-          "
-        >
-          Preencher Ficha de Anamnese
-        </a>
+            <div style="text-align:center; margin-top:40px;">
+            <a
+  onclick="openOverlay('anamnese')"
+  style="padding:14px 30px;border-radius:40px;background:#e8d9a0;color:#000;font-weight:500;text-decoration:none;font-size:14px;cursor:pointer;"
+>
+  Preencher Ficha de Anamnese
+</a>
       </div>
 
     </div>
   </div>
 </div>
 
+
+<div class="overlay" id="anamneseOverlay">
+
+  <div class="overlay-content" style="
+    background: rgba(20,20,20,0.95);
+    backdrop-filter: blur(10px);
+    max-width: 1100px;
+  ">
+
+    <button class="close-btn" onclick="closeOverlay('anamnese')">×</button>
+
+    <h2 style="text-align:center;margin-bottom:25px;">
+      Ficha de Anamnese
+    </h2>
+
+    <iframe
+      src="formularios/anamnese.html"
+      style="
+        width:100%;
+        height:80vh;
+        border:none;
+        border-radius:10px;
+        background:white;
+      ">
+    </iframe>
+
+  </div>
+
+</div>
 
     
     <!-- Footer -->

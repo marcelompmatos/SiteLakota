@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ficha de Anamnese</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:Poppins,sans-serif;
+background:#0B0C10;
+margin:0;
+padding:20px;
+color:white;
+}
+
+.container{
+max-width:650px;
+margin:auto;
+}
+
+/* TITULOS DE SEÇÃO */
+
+.section-title{
+background:#1F2833;
+padding:14px;
+border-radius:20px;
+text-align:center;
+font-weight:600;
+color:#66FCF1;
+margin:25px 0 15px 0;
+}
+
+/* CARD */
+
+.card{
+background:#1F2833;
+padding:18px;
+border-radius:14px;
+margin-bottom:14px;
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* LABEL */
+
+label{
+display:block;
+font-size:14px;
+margin-bottom:6px;
+color:#C5C6C7;
+font-weight:500;
+}
+
+/* INPUTS */
+
+input,select,textarea{
+
+width:100%;
+padding:14px;
+border-radius:10px;
+border:none;
+background:#0B0C10;
+color:white;
+font-size:15px;
+outline:none;
+
+}
+
+textarea{
+min-height:110px;
+resize:vertical;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+/* BOTÃO */
+
+button{
+
+margin-top:25px;
+width:100%;
+padding:16px;
+
+background:#66FCF1;
+border:none;
+
+border-radius:40px;
+
+font-size:16px;
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+button:hover{
+
+background:#45A29E;
+transform:scale(1.03);
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<form method="POST" action="enviar-anamnese.asp">
+
+<div class="section-title">
+IDENTIFICAÇÃO
+</div>
+
+<div class="card">
+
+<label>E-mail</label>
+<input type="email" name="email" placeholder="email@email.com" required>
+
+<label>Nome Completo</label>
+<input type="text" name="nome" placeholder="Nome completo">
+
+<label>Gênero</label>
+<select name="genero">
+<option>Selecione</option>
+<option>Masculino</option>
+<option>Feminino</option>
+</select>
+
+<label>Data de Nascimento</label>
+<input type="date" name="nascimento">
+
+<label>CPF</label>
+<input type="text" name="cpf" placeholder="CPF">
+
+</div>
+
+
+<div class="section-title">
+ENDEREÇO
+</div>
+
+<div class="card">
+
+<label>Tipo de Logradouro</label>
+
+<select name="logradouro">
+
+<option>Rua</option>
+<option>Avenida</option>
+<option>Travessa</option>
+<option>Alameda</option>
+<option>Estrada</option>
+<option>Rodovia</option>
+
+</select>
+
+
+<label>Nome da Via</label>
+<input type="text" name="rua">
+
+<div class="grid">
+
+<div>
+<label>Número</label>
+<input type="number" name="numero">
+</div>
+
+<div>
+<label>Complemento</label>
+
+<select name="complemento">
+
+<option>Selecione</option>
+<option>Apartamento</option>
+<option>Casa</option>
+<option>Bloco</option>
+<option>Sala</option>
+<option>Fundos</option>
+
+</select>
+
+</div>
+
+</div>
+
+<label>Bairro</label>
+<input type="text" name="bairro">
+
+<label>Cidade</label>
+<input type="text" name="cidade">
+
+<label>CEP</label>
+<input type="text" name="cep">
+
+</div>
+
+
+<div class="section-title">
+CONTATO
+</div>
+
+<div class="card">
+
+<label>Telefone</label>
+<input type="tel" name="telefone">
+
+<label>Contato de Emergência</label>
+<input type="text" name="contato_emergencia">
+
+</div>
+
+
+<div class="section-title">
+ANAMNESE
+</div>
+
+<div class="card">
+
+<label>Possui alguma doença?</label>
+<textarea name="doenca"></textarea>
+
+<label>Faz uso de medicamentos?</label>
+<textarea name="medicamentos"></textarea>
+
+<label>Possui pressão alta?</label>
+
+<select name="pressao">
+
+<option>Não</option>
+<option>Sim</option>
+
+</select>
+
+<label>Já realizou ritual de Kambo?</label>
+
+<select name="kambo">
+
+<option>Não</option>
+<option>Sim</option>
+
+</select>
+
+</div>
+
+
+<button type="submit">
+Enviar Ficha de Anamnese
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
