@@ -1,24 +1,39 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
+ <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <meta name="description" content="Espaço Céu Irmão Lakota - Vivências espirituais, Kambo e Barras Access em Mogi das Cruzes - SP.">
+    <meta name="keywords" content="xamanismo, kambo, barras access, espiritualidade, mogi das cruzes, ritual xamânico, medicina da floresta">
+    <meta name="author" content="Espaço Céu Irmão Lakota">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (WhatsApp / Facebook / Instagram preview) -->
+    <meta property="og:title" content="Céu Irmão Lakota | Xamanismo em Mogi das Cruzes">
+    <meta property="og:description" content="Vivências espirituais, Kambo e Barras Access em Mogi das Cruzes - SP.">
+    <meta property="og:image" content="https://ceuirmaolakota.com.br/images/home.jpg">
+    <meta property="og:url" content="https://ceuirmaolakota.com.br">
+    <meta property="og:type" content="website">
+
     <title>Céu Irmão Lakota | Xamanismo em Mogi das Cruzes - SP</title>
+
+    <link rel="icon" type="image/png" href="images/logo.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="tooplate-living-parallax.css" />
 
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  </style>
-
-  </head>
+</head>
   <body>
 
 
@@ -473,80 +488,102 @@
       </div>
     </div>
 
-    <!--AGENDA-->
-    <div class="overlay" id="agendaOverlay">
-      <div
-        class="overlay-content"
+<!--AGENDA-->
+<div class="overlay" id="agendaOverlay">
+  <div
+    class="overlay-content"
+    style="
+      background: rgba(20, 20, 20, 0.88);
+      color: #f5f5f5;
+      backdrop-filter: blur(10px);
+    "
+  >
+    <button class="close-btn" onclick="closeOverlay('agenda')">×</button>
+
+    <div style="text-align: center; margin-bottom: 60px">
+      <h2
         style="
-          background: rgba(20, 20, 20, 0.88);
-          color: #f5f5f5;
-          backdrop-filter: blur(10px);
+          font-size: 36px;
+          letter-spacing: 4px;
+          font-weight: 500;
+          color: #ffffff;
         "
       >
-        <button class="close-btn" onclick="closeOverlay('agenda')">×</button>
+        Agenda
+      </h2>
 
-        <div style="text-align: center; margin-bottom: 60px">
-          <h2
-            style="
-              font-size: 36px;
-              letter-spacing: 4px;
-              font-weight: 500;
-              color: #ffffff;
-            "
-          >
-            Agenda
-          </h2>
+      <div
+        style="
+          width: 50px;
+          height: 1px;
+          margin: 22px auto;
+          background: rgba(255, 255, 255, 0.35);
+        "
+      ></div>
 
-          <div
-            style="
-              width: 50px;
-              height: 1px;
-              margin: 22px auto;
-              background: rgba(255, 255, 255, 0.35);
-            "
-          ></div>
-
-          <p
-            style="
-              max-width: 640px;
-              margin: 0 auto;
-              font-size: 16px;
-              line-height: 1.8;
-              color: #cfcfcf;
-            "
-          >
-            Vivências, encontros e cerimônias cuidadosamente preparadas para sua
-            jornada de autoconhecimento e expansão da consciência.
-          </p>
-        </div>
-
-        <div
-          style="
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 40px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.04);
-          "
-        >
-          <div id="agendamentosCards">
-            <div
-              class="testimonial-card"
-              style="
-                text-align: center;
-                background: rgba(255, 255, 255, 0.03);
-                border: none;
-              "
-            >
-              <p style="color: #eaeaea; font-size: 15px; letter-spacing: 1px">
-                Carregando agendamentos...
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p
+        style="
+          max-width: 640px;
+          margin: 0 auto;
+          font-size: 16px;
+          line-height: 1.8;
+          color: #cfcfcf;
+        "
+      >
+        Vivências, encontros e cerimônias cuidadosamente preparadas para sua
+        jornada de autoconhecimento e expansão da consciência.
+      </p>
     </div>
 
+    <div
+      style="
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 40px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.04);
+      "
+    >
+
+      <!-- Eventos carregados via JS -->
+      <div id="agendamentosCards">
+        <div
+          class="testimonial-card"
+          style="
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: none;
+          "
+        >
+          <p style="color: #eaeaea; font-size: 15px; letter-spacing: 1px">
+            Carregando agendamentos...
+          </p>
+        </div>
+      </div>
+
+      <!-- BOTÃO ANAMNESE -->
+      <div style="text-align:center; margin-top:40px;">
+        <a
+          href="LINK_DA_ANAMNESE_AQUI"
+          target="_blank"
+          style="
+            padding: 14px 30px;
+            border-radius: 40px;
+            background: #e8d9a0;
+            color: #000;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+          "
+        >
+          Preencher Ficha de Anamnese
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
     
