@@ -12,21 +12,31 @@
 
 <style>
 
-/* CORREÇÃO GLOBAL */
-*{
+/* RESET SEGURO */
+
+*,
+*::before,
+*::after{
 box-sizing:border-box;
+}
+
+html,body{
 margin:0;
 padding:0;
+overflow-x:hidden;
 }
 
 body{
 font-family:Poppins,sans-serif;
 background:#0B0C10;
-padding:20px;
 color:white;
+padding:18px;
 }
 
+/* CONTAINER */
+
 .container{
+width:100%;
 max-width:650px;
 margin:auto;
 }
@@ -50,8 +60,9 @@ letter-spacing:1px;
 background:#1F2833;
 padding:20px;
 border-radius:14px;
-margin-bottom:14px;
-box-shadow:0 6px 20px rgba(0,0,0,0.3);
+margin-bottom:16px;
+box-shadow:0 6px 20px rgba(0,0,0,0.35);
+overflow:hidden;
 }
 
 /* LABEL */
@@ -59,7 +70,7 @@ box-shadow:0 6px 20px rgba(0,0,0,0.3);
 label{
 display:block;
 font-size:14px;
-margin-top:12px;
+margin-top:14px;
 margin-bottom:6px;
 color:#C5C6C7;
 font-weight:500;
@@ -67,16 +78,24 @@ font-weight:500;
 
 /* INPUTS */
 
-input,select,textarea{
+input,
+select,
+textarea{
 
 width:100%;
+max-width:100%;
 padding:14px;
+
 border-radius:10px;
 border:1px solid #2f3a44;
+
 background:#0B0C10;
 color:white;
+
 font-size:15px;
+
 outline:none;
+
 transition:0.2s;
 
 }
@@ -113,6 +132,7 @@ button{
 
 margin-top:30px;
 width:100%;
+
 padding:16px;
 
 background:#66FCF1;
@@ -125,7 +145,7 @@ font-weight:600;
 
 cursor:pointer;
 
-transition:0.3s;
+transition:0.25s;
 
 }
 
@@ -138,14 +158,19 @@ transform:scale(1.03);
 
 /* MOBILE */
 
-@media(max-width:600px){
+@media (max-width:600px){
 
 body{
-padding:15px;
+padding:14px;
+}
+
+.container{
+max-width:100%;
 }
 
 .grid{
 grid-template-columns:1fr;
+gap:10px;
 }
 
 .card{
@@ -191,7 +216,6 @@ IDENTIFICAÇÃO
 
 </div>
 
-
 <div class="section-title">
 ENDEREÇO
 </div>
@@ -208,7 +232,6 @@ ENDEREÇO
 <option>Estrada</option>
 <option>Rodovia</option>
 </select>
-
 
 <label>Nome da Via</label>
 <input type="text" name="rua">
@@ -247,7 +270,6 @@ ENDEREÇO
 
 </div>
 
-
 <div class="section-title">
 CONTATO
 </div>
@@ -261,7 +283,6 @@ CONTATO
 <input type="text" name="contato_emergencia">
 
 </div>
-
 
 <div class="section-title">
 ANAMNESE
@@ -291,7 +312,6 @@ ANAMNESE
 
 </div>
 
-
 <button type="submit">
 Enviar Ficha de Anamnese
 </button>
@@ -301,5 +321,4 @@ Enviar Ficha de Anamnese
 </div>
 
 </body>
-
 </html>
