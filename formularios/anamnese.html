@@ -12,8 +12,7 @@
 
 <style>
 
-/* RESET SEGURO */
-
+/* RESET */
 *,
 *::before,
 *::after{
@@ -26,23 +25,22 @@ padding:0;
 overflow-x:hidden;
 }
 
+/* BODY */
 body{
 font-family:Poppins,sans-serif;
 background:#0B0C10;
 color:white;
-padding:18px;
+padding:16px;
 }
 
 /* CONTAINER */
-
 .container{
 width:100%;
 max-width:650px;
 margin:auto;
 }
 
-/* TITULOS */
-
+/* TITULO */
 .section-title{
 background:#1F2833;
 padding:14px;
@@ -51,130 +49,103 @@ text-align:center;
 font-weight:600;
 color:#66FCF1;
 margin:25px 0 15px 0;
-letter-spacing:1px;
 }
 
 /* CARD */
-
 .card{
 background:#1F2833;
-padding:20px;
+padding:18px;
 border-radius:14px;
 margin-bottom:16px;
 box-shadow:0 6px 20px rgba(0,0,0,0.35);
-overflow:hidden;
 }
 
 /* LABEL */
-
 label{
 display:block;
 font-size:14px;
 margin-top:14px;
 margin-bottom:6px;
 color:#C5C6C7;
-font-weight:500;
 }
 
-/* INPUTS */
-
-input,
-select,
-textarea{
-
+/* INPUT */
+input,select,textarea{
 width:100%;
-max-width:100%;
 padding:14px;
-
 border-radius:10px;
 border:1px solid #2f3a44;
-
 background:#0B0C10;
 color:white;
-
 font-size:15px;
-
-outline:none;
-
-transition:0.2s;
-
 }
 
 /* FOCUS */
-
 input:focus,
 select:focus,
 textarea:focus{
-
 border-color:#66FCF1;
 box-shadow:0 0 0 1px #66FCF1;
-
-}
-
-/* TEXTAREA */
-
-textarea{
-min-height:110px;
-resize:vertical;
 }
 
 /* GRID */
-
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:12px;
-}
-
-/* BOTÃO */
-
-button{
-
-margin-top:30px;
-width:100%;
-
-padding:16px;
-
-background:#66FCF1;
-border:none;
-
-border-radius:40px;
-
-font-size:16px;
-font-weight:600;
-
-cursor:pointer;
-
-transition:0.25s;
-
-}
-
-button:hover{
-
-background:#45A29E;
-transform:scale(1.03);
-
-}
-
-/* MOBILE */
-
-@media (max-width:600px){
-
-body{
-padding:14px;
-}
-
-.container{
-max-width:100%;
-}
-
-.grid{
-grid-template-columns:1fr;
 gap:10px;
 }
 
-.card{
-padding:18px;
+/* BOTÃO */
+button{
+margin-top:30px;
+width:100%;
+padding:16px;
+background:#66FCF1;
+border:none;
+border-radius:40px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+}
+
+/* EXPANDER */
+.expander-header{
+background:#1F2833;
+padding:14px;
+border-radius:20px;
+text-align:center;
+color:#66FCF1;
+cursor:pointer;
+margin-top:10px;
+}
+
+.expander-content{
+max-height:0;
+overflow:hidden;
+transition:max-height 0.4s ease;
+}
+
+/* CHECK */
+.row{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:10px;
+}
+
+.hidden{
+display:none;
+}
+
+/* MOBILE */
+@media (max-width:600px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+body{
+padding:12px;
 }
 
 }
@@ -189,17 +160,16 @@ padding:18px;
 
 <form method="POST" action="enviar-anamnese.asp">
 
-<div class="section-title">
-IDENTIFICAÇÃO
-</div>
+<!-- IDENTIFICAÇÃO -->
+<div class="section-title">IDENTIFICAÇÃO</div>
 
 <div class="card">
 
 <label>E-mail</label>
-<input type="email" name="email" placeholder="email@email.com" required>
+<input type="email" name="email" required>
 
-<label>Nome Completo</label>
-<input type="text" name="nome" placeholder="Nome completo">
+<label>Nome</label>
+<input type="text" name="nome">
 
 <label>Gênero</label>
 <select name="genero">
@@ -208,117 +178,70 @@ IDENTIFICAÇÃO
 <option>Feminino</option>
 </select>
 
-<label>Data de Nascimento</label>
+<label>Nascimento</label>
 <input type="date" name="nascimento">
 
-<label>CPF</label>
-<input type="text" name="cpf" placeholder="000.000.000-00">
-
 </div>
 
-<div class="section-title">
-ENDEREÇO
-</div>
+<!-- ANAMNESE -->
+<div class="section-title">ANAMNESE</div>
 
 <div class="card">
 
-<label>Tipo de Logradouro</label>
-
-<select name="logradouro">
-<option>Rua</option>
-<option>Avenida</option>
-<option>Travessa</option>
-<option>Alameda</option>
-<option>Estrada</option>
-<option>Rodovia</option>
-</select>
-
-<label>Nome da Via</label>
-<input type="text" name="rua">
-
-<div class="grid">
-
-<div>
-<label>Número</label>
-<input type="number" name="numero">
+<!-- EXPANDER -->
+<div class="expander-header" onclick="toggleExpander()">
+Usou ou usa drogas?
 </div>
 
-<div>
-<label>Complemento</label>
+<div id="expander" class="expander-content">
 
-<select name="complemento">
+<label>Já utilizou?</label>
+<select id="selectDroga" onchange="toggleDrogas()">
 <option>Selecione</option>
-<option>Apartamento</option>
-<option>Casa</option>
-<option>Bloco</option>
-<option>Sala</option>
-<option>Fundos</option>
-</select>
-
-</div>
-
-</div>
-
-<label>Bairro</label>
-<input type="text" name="bairro">
-
-<label>Cidade</label>
-<input type="text" name="cidade">
-
-<label>CEP</label>
-<input type="text" name="cep" placeholder="00000-000">
-
-</div>
-
-<div class="section-title">
-CONTATO
-</div>
-
-<div class="card">
-
-<label>Telefone</label>
-<input type="tel" name="telefone" placeholder="(11) 99999-9999">
-
-<label>Contato de Emergência</label>
-<input type="text" name="contato_emergencia">
-
-</div>
-
-<div class="section-title">
-ANAMNESE
-</div>
-
-<div class="card">
-
-<label>Possui alguma doença?</label>
-<textarea name="doenca"></textarea>
-
-<label>Faz uso de medicamentos?</label>
-<textarea name="medicamentos"></textarea>
-
-<label>Possui pressão alta?</label>
-
-<select name="pressao">
 <option>Não</option>
 <option>Sim</option>
 </select>
 
-<label>Já realizou ritual de Kambo?</label>
+<div id="areaDrogas" class="hidden">
 
-<select name="kambo">
-<option>Não</option>
-<option>Sim</option>
-</select>
+<!-- CANNABIS -->
+<div class="row">
+<input type="checkbox" onchange="toggleCampo(this,'cannabis')">
+<label>Cannabis</label>
+</div>
+<input id="cannabis_desde" class="hidden" placeholder="Desde quando?">
+<input id="cannabis_ultima" class="hidden" placeholder="Última vez?">
+
+<!-- COCAINA -->
+<div class="row">
+<input type="checkbox" onchange="toggleCampo(this,'cocaina')">
+<label>Cocaína</label>
+</div>
+<input id="cocaina_desde" class="hidden" placeholder="Desde quando?">
+<input id="cocaina_ultima" class="hidden" placeholder="Última vez?">
+
+<!-- OUTROS -->
+<div class="row">
+<input type="checkbox" onchange="toggleCampo(this,'outros')">
+<label>Outros</label>
+</div>
+<input id="outros_nome" class="hidden" placeholder="Qual?">
+<input id="outros_desde" class="hidden" placeholder="Desde quando?">
+<input id="outros_ultima" class="hidden" placeholder="Última vez?">
 
 </div>
 
-<button type="submit">
-Enviar Ficha de Anamnese
-</button>
+</div>
+
+</div>
+
+<button type="submit">Enviar</button>
 
 </form>
 
 </div>
+
+<script src="../Js/anamnese.js"></script>
 
 </body>
 </html>
