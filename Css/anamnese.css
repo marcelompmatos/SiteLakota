@@ -1,0 +1,181 @@
+/* =========================
+   RESET
+========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0B0C10;
+    color: white;
+    padding: 16px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+}
+
+/* =========================
+   TITULO
+========================= */
+.section-title {
+    background: #1F2833;
+    padding: 14px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #66FCF1;
+    margin: 25px 0 15px 0;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+    background: #1F2833;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   LABEL
+========================= */
+label {
+    display: block;
+    font-size: 14px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    color: #C5C6C7;
+}
+
+/* =========================
+   INPUTS
+========================= */
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #2f3a44;
+    background: #0B0C10;
+    color: white;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus {
+    border-color: #66FCF1;
+    box-shadow: 0 0 0 1px #66FCF1;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 16px;
+    background: #66FCF1;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.02);
+}
+
+/* =========================
+   EXPANDER
+========================= */
+.expander-header {
+    background: #1F2833;
+    padding: 14px;
+    border-radius: 20px;
+    text-align: center;
+    color: #66FCF1;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.expander-header:hover {
+    background: #273340;
+}
+
+.expander-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+/* =========================
+   CHECKBOX (ALINHADO)
+========================= */
+.row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.row:hover {
+    background: #2b3642;
+}
+
+/* LABEL dentro do checkbox */
+.row label {
+    margin: 0;
+    display: inline;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* CHECKBOX */
+.row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #66FCF1;
+    cursor: pointer;
+}
+
+/* =========================
+   UTIL
+========================= */
+.hidden {
+    display: none;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+}

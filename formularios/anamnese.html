@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,148 +9,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<style>
-
-/* RESET */
-*,
-*::before,
-*::after{
-box-sizing:border-box;
-}
-
-html,body{
-margin:0;
-padding:0;
-overflow-x:hidden;
-}
-
-/* BODY */
-body{
-font-family:Poppins,sans-serif;
-background:#0B0C10;
-color:white;
-padding:16px;
-}
-
-/* CONTAINER */
-.container{
-width:100%;
-max-width:650px;
-margin:auto;
-}
-
-/* TITULO */
-.section-title{
-background:#1F2833;
-padding:14px;
-border-radius:20px;
-text-align:center;
-font-weight:600;
-color:#66FCF1;
-margin:25px 0 15px 0;
-}
-
-/* CARD */
-.card{
-background:#1F2833;
-padding:18px;
-border-radius:14px;
-margin-bottom:16px;
-box-shadow:0 6px 20px rgba(0,0,0,0.35);
-}
-
-/* LABEL */
-label{
-display:block;
-font-size:14px;
-margin-top:14px;
-margin-bottom:6px;
-color:#C5C6C7;
-}
-
-/* INPUT */
-input,select,textarea{
-width:100%;
-padding:14px;
-border-radius:10px;
-border:1px solid #2f3a44;
-background:#0B0C10;
-color:white;
-font-size:15px;
-}
-
-/* FOCUS */
-input:focus,
-select:focus,
-textarea:focus{
-border-color:#66FCF1;
-box-shadow:0 0 0 1px #66FCF1;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
-/* BOTÃO */
-button{
-margin-top:30px;
-width:100%;
-padding:16px;
-background:#66FCF1;
-border:none;
-border-radius:40px;
-font-size:16px;
-font-weight:600;
-cursor:pointer;
-}
-
-/* EXPANDER */
-.expander-header{
-background:#1F2833;
-padding:14px;
-border-radius:20px;
-text-align:center;
-color:#66FCF1;
-cursor:pointer;
-margin-top:10px;
-}
-
-.expander-content{
-max-height:0;
-overflow:hidden;
-transition:max-height 0.4s ease;
-}
-
-/* CHECK */
-.row{
-display:flex;
-align-items:center;
-gap:10px;
-margin-top:10px;
-}
-
-.hidden{
-display:none;
-}
-
-/* MOBILE */
-@media (max-width:600px){
-
-.grid{
-grid-template-columns:1fr;
-}
-
-body{
-padding:12px;
-}
-
-}
-
-</style>
-
+<link rel="stylesheet" href="../Css/anamnese.css">
 </head>
 
 <body>
@@ -195,7 +53,7 @@ Usou ou usa drogas?
 
 <div id="expander" class="expander-content">
 
-<label>Já utilizou?</label>
+<label>Já utilizou substâncias ilegais?</label>
 <select id="selectDroga" onchange="toggleDrogas()">
 <option>Selecione</option>
 <option>Não</option>
@@ -212,13 +70,29 @@ Usou ou usa drogas?
 <input id="cannabis_desde" class="hidden" placeholder="Desde quando?">
 <input id="cannabis_ultima" class="hidden" placeholder="Última vez?">
 
-<!-- COCAINA -->
+<!-- COCAÍNA -->
 <div class="row">
 <input type="checkbox" onchange="toggleCampo(this,'cocaina')">
 <label>Cocaína</label>
 </div>
 <input id="cocaina_desde" class="hidden" placeholder="Desde quando?">
 <input id="cocaina_ultima" class="hidden" placeholder="Última vez?">
+
+<!-- CRACK -->
+<div class="row">
+<input type="checkbox" onchange="toggleCampo(this,'crack')">
+<label>Crack</label>
+</div>
+<input id="crack_desde" class="hidden" placeholder="Desde quando?">
+<input id="crack_ultima" class="hidden" placeholder="Última vez?">
+
+<!-- ECSTASY -->
+<div class="row">
+<input type="checkbox" onchange="toggleCampo(this,'ecstasy')">
+<label>Ecstasy / Bala</label>
+</div>
+<input id="ecstasy_desde" class="hidden" placeholder="Desde quando?">
+<input id="ecstasy_ultima" class="hidden" placeholder="Última vez?">
 
 <!-- OUTROS -->
 <div class="row">
@@ -241,7 +115,7 @@ Usou ou usa drogas?
 
 </div>
 
-<script src="../Js/anamnese.js"></script>
+<script src="../js/anamnese.js"></script>
 
 </body>
 </html>
