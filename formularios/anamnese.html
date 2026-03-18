@@ -27,17 +27,22 @@
 <input type="email" name="email" required>
 
 <label>Nome</label>
-<input type="text" name="nome">
+<input type="text" name="nome" required>
 
 <label>Gênero</label>
-<select name="genero">
-<option>Selecione</option>
-<option>Masculino</option>
-<option>Feminino</option>
+<select name="genero" required>
+    <option value="" disabled selected>Selecione</option>
+    <option value="M">Masculino</option>
+    <option value="F">Feminino</option>
 </select>
 
-<label>Nascimento</label>
-<input type="date" name="nascimento">
+<label for="nascimento">Nascimento</label>
+<input 
+    type="date" 
+    id="nascimento"
+    name="nascimento" 
+    required
+    max="2026-12-31">
 
 </div>
 
