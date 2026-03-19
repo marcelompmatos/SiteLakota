@@ -61,3 +61,49 @@ function atualizarAlturaExpander(el) {
     el.style.maxHeight = "auto";
     el.style.maxHeight = el.scrollHeight + "px";
 }
+
+
+/* Psiquiatria */
+
+function togglePsiquiatria() {
+    const el = document.getElementById("expanderPsiquiatria");
+    if (!el) return;
+
+    if (el.classList.contains("open")) {
+        fecharExpander(el);
+    } else {
+        abrirExpander(el);
+    }
+}
+
+function togglePsiquiatriaDetalhes() {
+    const value = document.getElementById("PsiquiatraPicker").value;
+    const area = document.getElementById("TratamentoStack");
+    const expander = document.getElementById("expanderPsiquiatria");
+
+    if (value === "sim") {
+        area.style.display = "block";
+    } else {
+        area.style.display = "none";
+
+        // reset do campo interno
+        document.getElementById("TipoTratamentoEntry").style.display = "none";
+        document.getElementById("TratamentoPicker").value = "";
+    }
+
+    atualizarAlturaExpander(expander);
+}
+
+function toggleTipoTratamento() {
+    const value = document.getElementById("TratamentoPicker").value;
+    const campo = document.getElementById("TipoTratamentoEntry");
+    const expander = document.getElementById("expanderPsiquiatria");
+
+    if (value === "sim") {
+        campo.style.display = "block";
+    } else {
+        campo.style.display = "none";
+    }
+
+    atualizarAlturaExpander(expander);
+}

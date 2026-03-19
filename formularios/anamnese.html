@@ -112,6 +112,45 @@ Usou ou usa drogas?
 
 </div>
 
+
+
+
+</div>
+
+<!-- PSIQUIATRIA -->
+<div class="card">
+
+    <!-- HEADER -->
+    <div class="expander-header" onclick="togglePsiquiatria()">
+        Situações Psiquiátricas
+    </div>
+
+    <!-- CONTEÚDO -->
+   <div id="expanderPsiquiatria" class="expander-content">
+
+        <label>Apresenta ou teve situações psiquiátricas?</label>
+        <select id="PsiquiatraPicker" onchange="togglePsiquiatriaDetalhes()">
+            <option value="" selected disabled>Selecione</option>
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option>
+        </select>
+
+        <!-- CAMPOS QUANDO "SIM" -->
+        <div id="TratamentoStack" style="display: none;">
+
+            <label>Faz ou fez tratamento psiquiátrico adequado?</label>
+            <select id="TratamentoPicker" onchange="toggleTipoTratamento()">
+                <option value="" selected disabled>Selecione</option>
+                <option value="nao">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+
+            <input type="text" id="TipoTratamentoEntry" style="display: none;" placeholder="Qual tipo de tratamento?">
+            
+        </div>
+
+    </div>
+
 </div>
 
 <button type="submit">Enviar</button>
