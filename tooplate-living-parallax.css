@@ -1656,3 +1656,6 @@ footer a:hover {
   transform: scale(1.2);
 }
 
+.map-container iframe {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
