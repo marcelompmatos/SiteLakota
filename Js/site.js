@@ -82,20 +82,54 @@ function parseDateTime(isoDateStr, timeStr) {
  * Renderiza os cards de agendamento
  */
 function renderAgendamentos(agendamentos) {
-
     const container = document.getElementById("agendamentosCards");
     container.innerHTML = "";
+
+    if (!agendamentos || agendamentos.length === 0) {
+        container.innerHTML = `
+            <div style="
+                text-align:center;
+                color:#cfcfcf;
+                padding:40px;
+                font-size:15px;">
+                Nenhum evento disponível no momento.
+            </div>
+        `;
+        return;
+    }
 
     // Ordena por data (mais próximo primeiro)
     agendamentos.sort((a, b) => {
         const da = parseDateTime(a.data, a.hora);
         const db = parseDateTime(b.data, b.hora);
-        return da - db;
+        return (da || 0) - (db || 0);
     });
+
+    const fragment = document.createDocumentFragment();
 
     agendamentos.forEach(a => {
 
         const dataObj = parseDateTime(a.data, a.hora);
+
+        // 🔹 FORMATAÇÕES
+        const dia = dataObj
+            ? dataObj.getDate().toString().padStart(2, '0')
+            : "--";
+
+        const mes = dataObj
+            ? dataObj.toLocaleString("pt-BR", { month: "short" }).toUpperCase()
+            : "---";
+
+        const ano = dataObj
+            ? dataObj.getFullYear()
+            : "";
+
+        const hora = dataObj
+            ? dataObj.toLocaleTimeString("pt-BR", {
+                hour: "2-digit",
+                minute: "2-digit"
+            })
+            : "";
 
         const dataFormatada = dataObj
             ? dataObj.toLocaleString("pt-BR", {
@@ -109,7 +143,7 @@ function renderAgendamentos(agendamentos) {
 
         const titulo = a.evento || "Evento sem título";
 
-        const valor = a.valor !== undefined
+        const valor = a.valor !== undefined && a.valor !== null
             ? `R$ ${Number(a.valor).toFixed(2)}`
             : null;
 
@@ -119,27 +153,66 @@ function renderAgendamentos(agendamentos) {
 
         const waLink = `https://wa.me/5511930692059?text=${mensagemWhatsApp}`;
 
-        const card = document.createElement("div");
+        const wrapper = document.createElement("div");
 
-        card.innerHTML = `
+        wrapper.innerHTML = `
             <div style="
                 background: rgba(255,255,255,0.05);
                 padding:28px;
                 border-radius:16px;
-                margin-bottom:28px;
+                margin-bottom:22px;
                 border:1px solid rgba(255,255,255,0.08);
                 backdrop-filter: blur(4px);
-                transition:0.3s ease;
+                transition:all 0.25s ease;
             ">
 
+                <!-- DATA DESTACADA -->
                 <div style="
-                    font-size:14px;
-                    letter-spacing:1px;
-                    color:#bdbdbd;
-                    margin-bottom:10px;">
-                    ${dataFormatada}
+                    display:flex;
+                    align-items:center;
+                    gap:16px;
+                    margin-bottom:18px;
+                ">
+
+                    <div style="
+                        min-width:60px;
+                        text-align:center;
+                        padding:12px 8px;
+                        border-radius:14px;
+                        background:#e8d9a0;
+                        color:#000;
+                        font-weight:700;
+                        line-height:1.2;
+                        box-shadow:0 6px 18px rgba(0,0,0,0.3);
+                    ">
+                        <div style="font-size:22px;">${dia}</div>
+                        <div style="font-size:11px; letter-spacing:1px;">
+                            ${mes}
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="
+                            font-size:13px;
+                            color:#cfcfcf;
+                            letter-spacing:1px;
+                        ">
+                            ${ano}
+                        </div>
+
+                        <div style="
+                            font-size:14px;
+                            color:#e8d9a0;
+                            font-weight:500;
+                            margin-top:2px;
+                        ">
+                            ${hora}
+                        </div>
+                    </div>
+
                 </div>
 
+                <!-- TÍTULO -->
                 <h3 style="
                     font-size:22px;
                     color:#ffffff;
@@ -148,6 +221,7 @@ function renderAgendamentos(agendamentos) {
                     ${titulo}
                 </h3>
 
+                <!-- VALOR -->
                 ${valor ? `
                     <div style="
                         font-size:18px;
@@ -158,6 +232,7 @@ function renderAgendamentos(agendamentos) {
                     </div>
                 ` : ""}
 
+                <!-- BOTÃO -->
                 <a href="${waLink}" target="_blank"
                    style="
                    display:inline-block;
@@ -168,36 +243,28 @@ function renderAgendamentos(agendamentos) {
                    text-decoration:none;
                    font-weight:500;
                    letter-spacing:0.5px;
-                   transition:0.3s ease;">
+                   transition:0.25s;">
                    Reservar Vaga pelo WhatsApp
                 </a>
 
             </div>
         `;
 
-        // efeito hover elegante
-        card.firstElementChild.onmouseenter = function () {
-            this.style.transform = "translateY(-4px)";
-            this.style.background = "rgba(255,255,255,0.08)";
+        const card = wrapper.firstElementChild;
+
+        // 🔥 HOVER MAIS SUAVE
+        card.onmouseenter = () => {
+            card.style.transform = "translateY(-6px) scale(1.01)";
+            card.style.background = "rgba(255,255,255,0.08)";
         };
 
-        card.firstElementChild.onmouseleave = function () {
-            this.style.transform = "translateY(0)";
-            this.style.background = "rgba(255,255,255,0.05)";
+        card.onmouseleave = () => {
+            card.style.transform = "translateY(0) scale(1)";
+            card.style.background = "rgba(255,255,255,0.05)";
         };
 
-        container.appendChild(card);
+        fragment.appendChild(wrapper);
     });
 
-    // Caso não tenha eventos
-    if (agendamentos.length === 0) {
-        container.innerHTML = `
-            <div style="
-                text-align:center;
-                color:#cfcfcf;
-                padding:30px;">
-                Nenhum evento disponível no momento.
-            </div>
-        `;
-    }
+    container.appendChild(fragment);
 }
