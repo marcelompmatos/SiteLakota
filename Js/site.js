@@ -89,16 +89,15 @@ function renderAgendamentos(agendamentos) {
         container.innerHTML = `
             <div style="
                 text-align:center;
-                color:#cfcfcf;
-                padding:40px;
-                font-size:15px;">
+                color:#aaa;
+                padding:60px 20px;
+                font-size:16px;">
                 Nenhum evento disponível no momento.
             </div>
         `;
         return;
     }
 
-    // Ordena por data (mais próximo primeiro)
     agendamentos.sort((a, b) => {
         const da = parseDateTime(a.data, a.hora);
         const db = parseDateTime(b.data, b.hora);
@@ -111,24 +110,11 @@ function renderAgendamentos(agendamentos) {
 
         const dataObj = parseDateTime(a.data, a.hora);
 
-        // 🔹 FORMATAÇÕES
-        const dia = dataObj
-            ? dataObj.getDate().toString().padStart(2, '0')
-            : "--";
-
-        const mes = dataObj
-            ? dataObj.toLocaleString("pt-BR", { month: "short" }).toUpperCase()
-            : "---";
-
-        const ano = dataObj
-            ? dataObj.getFullYear()
-            : "";
-
+        const dia = dataObj ? dataObj.getDate().toString().padStart(2, '0') : "--";
+        const mes = dataObj ? dataObj.toLocaleString("pt-BR", { month: "short" }).toUpperCase() : "---";
+        const ano = dataObj ? dataObj.getFullYear() : "";
         const hora = dataObj
-            ? dataObj.toLocaleTimeString("pt-BR", {
-                hour: "2-digit",
-                minute: "2-digit"
-            })
+            ? dataObj.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
             : "";
 
         const dataFormatada = dataObj
@@ -157,55 +143,44 @@ function renderAgendamentos(agendamentos) {
 
         wrapper.innerHTML = `
             <div style="
-                background: rgba(255,255,255,0.05);
-                padding:28px;
-                border-radius:16px;
-                margin-bottom:22px;
+                background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+                padding:30px;
+                border-radius:18px;
+                margin-bottom:24px;
                 border:1px solid rgba(255,255,255,0.08);
-                backdrop-filter: blur(4px);
-                transition:all 0.25s ease;
+                backdrop-filter: blur(8px);
+                transition:all 0.35s ease;
+                box-shadow:0 10px 30px rgba(0,0,0,0.4);
+                position:relative;
+                overflow:hidden;
             ">
 
-                <!-- DATA DESTACADA -->
-                <div style="
-                    display:flex;
-                    align-items:center;
-                    gap:16px;
-                    margin-bottom:18px;
-                ">
+                <!-- HEADER -->
+                <div style="display:flex; align-items:center; gap:18px; margin-bottom:20px;">
 
+                    <!-- DATA BOX -->
                     <div style="
-                        min-width:60px;
+                        min-width:65px;
                         text-align:center;
-                        padding:12px 8px;
+                        padding:14px 10px;
                         border-radius:14px;
-                        background:#e8d9a0;
+                        background: linear-gradient(135deg, #f5e6a8, #d6b85c);
                         color:#000;
                         font-weight:700;
-                        line-height:1.2;
-                        box-shadow:0 6px 18px rgba(0,0,0,0.3);
+                        box-shadow:0 6px 20px rgba(0,0,0,0.4);
                     ">
-                        <div style="font-size:22px;">${dia}</div>
+                        <div style="font-size:24px;">${dia}</div>
                         <div style="font-size:11px; letter-spacing:1px;">
                             ${mes}
                         </div>
                     </div>
 
+                    <!-- INFO -->
                     <div>
-                        <div style="
-                            font-size:13px;
-                            color:#cfcfcf;
-                            letter-spacing:1px;
-                        ">
+                        <div style="font-size:12px; color:#aaa;">
                             ${ano}
                         </div>
-
-                        <div style="
-                            font-size:14px;
-                            color:#e8d9a0;
-                            font-weight:500;
-                            margin-top:2px;
-                        ">
+                        <div style="font-size:14px; color:#f5e6a8; margin-top:3px;">
                             ${hora}
                         </div>
                     </div>
@@ -215,20 +190,20 @@ function renderAgendamentos(agendamentos) {
                 <!-- TÍTULO -->
                 <h3 style="
                     font-size:22px;
-                    color:#ffffff;
-                    margin-bottom:12px;
-                    font-weight:500;">
+                    color:#fff;
+                    margin-bottom:14px;
+                    font-weight:600;">
                     ${titulo}
                 </h3>
 
                 <!-- VALOR -->
                 ${valor ? `
                     <div style="
-                        font-size:18px;
-                        font-weight:600;
-                        color:#e8d9a0;
-                        margin-bottom:18px;">
-                        Valor: ${valor}
+                        font-size:20px;
+                        font-weight:700;
+                        color:#f5e6a8;
+                        margin-bottom:20px;">
+                        ${valor}
                     </div>
                 ` : ""}
 
@@ -236,15 +211,17 @@ function renderAgendamentos(agendamentos) {
                 <a href="${waLink}" target="_blank"
                    style="
                    display:inline-block;
-                   padding:12px 26px;
-                   border-radius:40px;
-                   background:#25D366;
-                   color:#ffffff;
+                   padding:14px 28px;
+                   border-radius:50px;
+                   background: linear-gradient(135deg, #25D366, #1ebe5d);
+                   color:#fff;
                    text-decoration:none;
-                   font-weight:500;
+                   font-weight:600;
                    letter-spacing:0.5px;
-                   transition:0.25s;">
-                   Reservar Vaga pelo WhatsApp
+                   transition:0.25s;
+                   box-shadow:0 6px 20px rgba(37,211,102,0.4);
+                ">
+                   💬 Reservar no WhatsApp
                 </a>
 
             </div>
@@ -252,15 +229,24 @@ function renderAgendamentos(agendamentos) {
 
         const card = wrapper.firstElementChild;
 
-        // 🔥 HOVER MAIS SUAVE
+        // 🔥 HOVER PREMIUM
         card.onmouseenter = () => {
-            card.style.transform = "translateY(-6px) scale(1.01)";
-            card.style.background = "rgba(255,255,255,0.08)";
+            card.style.transform = "translateY(-8px) scale(1.02)";
+            card.style.boxShadow = "0 20px 50px rgba(0,0,0,0.6)";
         };
 
         card.onmouseleave = () => {
             card.style.transform = "translateY(0) scale(1)";
-            card.style.background = "rgba(255,255,255,0.05)";
+            card.style.boxShadow = "0 10px 30px rgba(0,0,0,0.4)";
+        };
+
+        // 🔥 CLICK NO BOTÃO
+        const btn = card.querySelector("a");
+        btn.onmousedown = () => {
+            btn.style.transform = "scale(0.95)";
+        };
+        btn.onmouseup = () => {
+            btn.style.transform = "scale(1)";
         };
 
         fragment.appendChild(wrapper);
