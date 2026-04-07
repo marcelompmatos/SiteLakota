@@ -2001,10 +2001,10 @@ footer a:hover {
         align-items: center;
         justify-content: center;
         padding: 10px;
-        background: rgba(0,0,0,0.75) !important;
-        border: 1px solid rgba(255,255,255,0.85) !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(0,0,0,0.12) !important;
         border-radius: 14px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         z-index: 1400;
     }
 
@@ -2013,16 +2013,16 @@ footer a:hover {
         width: 26px;
         height: 3px;
         margin: 5px 0;
-        background: #ffffff !important;
+        background: #000000 !important;
         border-radius: 3px;
         transition: all 0.3s ease;
-        box-shadow: 0 0 6px rgba(255,255,255,0.5);
+        box-shadow: none;
     }
 
     /* efeito quando ativo (se seu JS adiciona classe active) */
     .menu-toggle.active {
-        background: rgba(255, 255, 255, 0.2) !important;
-        border-color: rgba(255, 255, 255, 0.85) !important;
+        background: #f7f7f7 !important;
+        border-color: rgba(0, 0, 0, 0.12) !important;
     }
 
     .menu-toggle.active span:nth-child(1) {
