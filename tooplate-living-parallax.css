@@ -472,6 +472,21 @@ nav a::after {
 	transform: rotate(-45deg) translate(8px, -8px);
 }
 
+/* Ensure menu toggle stays visible when active */
+.menu-toggle.active {
+	background: #ffffff !important;
+	border: 1px solid #ffffff !important;
+}
+
+/* Ensure menu toggle looks correct in all states */
+.menu-toggle:active,
+.menu-toggle:focus,
+.menu-toggle:hover {
+	background: #ffffff !important;
+	border: 1px solid #ffffff !important;
+	outline: none !important;
+}
+
 /* Hide menu toggle on desktop */
 @media (min-width: 1025px) {
 	.menu-toggle {
@@ -1495,6 +1510,20 @@ footer a:hover {
 		pointer-events: all;
 	}
 
+	/* Ensure all nav items are visible when menu is active */
+	nav.active .nav-list li {
+		display: block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+	}
+
+	nav.active .nav-list li a {
+		display: block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		color: #fff !important;
+	}
+
 	nav a {
 		padding: 18px 30px;
 		width: 100%;
@@ -1502,9 +1531,12 @@ footer a:hover {
 		font-size: 1.1rem;
 		border-radius: 0;
 		transition: all 0.25s ease;
-		color: #fff;
-	display: block;
-}
+		color: #fff !important;
+		display: block !important;
+		background: transparent !important;
+		text-decoration: none !important;
+		border: none !important;
+	}
 
 	.nav-list {
 		display: flex !important;
@@ -1521,6 +1553,10 @@ footer a:hover {
 		display: block !important;
 		margin: 0 !important;
 		padding: 0 !important;
+		list-style: none !important;
+		position: static !important;
+		visibility: visible !important;
+		opacity: 1 !important;
 	}
 	nav a::before {
 		border-radius: 0;
