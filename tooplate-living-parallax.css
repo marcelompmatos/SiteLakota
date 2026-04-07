@@ -182,6 +182,15 @@ nav {
 	display: none; /* Hide on mobile by default */
 	gap: 40px;
 	align-items: center;
+	position: relative;
+	z-index: 1300;
+}
+
+nav.active {
+	display: flex !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	transform: translateY(0) !important;
 }
 
 /* Show nav on desktop */
@@ -1499,15 +1508,17 @@ footer a:hover {
 		visibility: hidden;
 		transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
 		pointer-events: none;
-		z-index: 1100;
+		z-index: 1300;
+		height: calc(100vh - 72px);
 	}
 
 	nav.active {
 		display: flex !important;
-		transform: translateY(0);
-		opacity: 1;
-		visibility: visible;
-		pointer-events: all;
+		transform: translateY(0) !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+		pointer-events: all !important;
+		height: calc(100vh - 72px) !important;
 	}
 
 	/* Ensure all nav items are visible when menu is active */
@@ -1990,11 +2001,11 @@ footer a:hover {
         align-items: center;
         justify-content: center;
         padding: 10px;
-        background: #ffffff !important;
-        border: 1px solid #ffffff !important;
+        background: rgba(0,0,0,0.75) !important;
+        border: 1px solid rgba(255,255,255,0.85) !important;
         border-radius: 14px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-        z-index: 1201;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        z-index: 1400;
     }
 
     .menu-toggle span {
@@ -2002,13 +2013,18 @@ footer a:hover {
         width: 26px;
         height: 3px;
         margin: 5px 0;
-        background: #000000 !important;
+        background: #ffffff !important;
         border-radius: 3px;
         transition: all 0.3s ease;
-        box-shadow: 0 0 6px rgba(0,0,0,0.6);
+        box-shadow: 0 0 6px rgba(255,255,255,0.5);
     }
 
     /* efeito quando ativo (se seu JS adiciona classe active) */
+    .menu-toggle.active {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-color: rgba(255, 255, 255, 0.85) !important;
+    }
+
     .menu-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
