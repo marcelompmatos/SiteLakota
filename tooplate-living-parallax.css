@@ -1790,6 +1790,18 @@ footer a:hover {
         margin-bottom: 20px;
     }
 
+    .service-grid,
+    .contact-grid,
+    .agenda-panel {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-card,
+    .contact-panel,
+    .agenda-empty {
+        width: 100%;
+    }
+
     .overlay-content p {
         font-size: 0.95rem;
         line-height: 1.7;
