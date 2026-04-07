@@ -1465,7 +1465,7 @@ footer a:hover {
 
 	nav {
 		position: fixed;
-		top: calc(72px + env(safe-area-inset-top, 0px));
+		top: 72px;
 		left: 0;
 		right: 0;
 		bottom: 0;
@@ -1477,6 +1477,8 @@ footer a:hover {
 		gap: 0;
 		padding: 24px 0 32px;
 		overflow-y: auto;
+		overflow-x: hidden;
+		box-sizing: border-box;
 		transform: translateY(-100%);
 		opacity: 0;
 		visibility: hidden;
@@ -1505,16 +1507,20 @@ footer a:hover {
 }
 
 	.nav-list {
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
-		width: 100%;
-		margin: 0;
-		padding: 0;
+		display: flex !important;
+		flex-direction: column !important;
+		align-items: stretch !important;
+		width: 100% !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		list-style: none !important;
 	}
 
 	.nav-list li {
-		width: 100%;
+		width: 100% !important;
+		display: block !important;
+		margin: 0 !important;
+		padding: 0 !important;
 	}
 	nav a::before {
 		border-radius: 0;
@@ -1939,8 +1945,8 @@ footer a:hover {
     .menu-toggle {
         display: flex !important;
         position: fixed;
-        top: env(safe-area-inset-top, 16px);
-        right: env(safe-area-inset-right, 16px);
+        top: 16px;
+        right: 16px;
         min-width: 44px;
         min-height: 44px;
         width: 44px;
@@ -1948,8 +1954,8 @@ footer a:hover {
         align-items: center;
         justify-content: center;
         padding: 10px;
-        background: rgba(255, 255, 255, 0.18);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: #ffffff !important;
+        border: 1px solid #ffffff !important;
         border-radius: 14px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         z-index: 1201;
@@ -1960,7 +1966,7 @@ footer a:hover {
         width: 26px;
         height: 3px;
         margin: 5px 0;
-        background: #ffffff !important;
+        background: #000000 !important;
         border-radius: 3px;
         transition: all 0.3s ease;
         box-shadow: 0 0 6px rgba(0,0,0,0.6);
