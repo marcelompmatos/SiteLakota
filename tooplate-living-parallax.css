@@ -441,32 +441,34 @@ nav a::after {
 
 /* Mobile Menu Toggle */
 .menu-toggle {
-	display: flex;
+	display: flex !important;
 	flex-direction: column;
-	gap: 6px;
 	cursor: pointer;
 	position: fixed;
 	top: 16px;
 	right: 18px;
-	min-width: 44px;
-	min-height: 44px;
-	width: 44px;
-	height: 44px;
-	padding: 10px;
-	background: rgba(255, 255, 255, 0.18);
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	min-width: 48px;
+	min-height: 48px;
+	width: 48px;
+	height: 48px;
+	padding: 8px;
+	background: #ffffff !important;
+	border: 1px solid rgba(0,0,0,0.12) !important;
 	border-radius: 14px;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-	z-index: 1201;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+	z-index: 1400;
 }
 
 .menu-toggle span {
-	width: 30px;
+	width: 24px;
 	height: 3px;
-	background: #fff;
+	background: #000000 !important;
+	border-radius: 3px;
 	transition: all 0.3s ease;
+	margin: 3px 0;
+	display: block !important;
 }
 
 .menu-toggle.active span:nth-child(1) {
@@ -481,19 +483,9 @@ nav a::after {
 	transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Ensure menu toggle stays visible when active */
 .menu-toggle.active {
-	background: #ffffff !important;
-	border: 1px solid #ffffff !important;
-}
-
-/* Ensure menu toggle looks correct in all states */
-.menu-toggle:active,
-.menu-toggle:focus,
-.menu-toggle:hover {
-	background: #ffffff !important;
-	border: 1px solid #ffffff !important;
-	outline: none !important;
+	background: #f0f0f0 !important;
+	border: 1px solid rgba(0,0,0,0.15) !important;
 }
 
 /* Hide menu toggle on desktop */
@@ -1590,26 +1582,11 @@ footer a:hover {
 	}
 
 	.menu-toggle {
-		display: flex !important;
-		position: fixed;
-		top: 16px;
-		right: 18px;
-		min-width: 44px;
-		min-height: 44px;
-		width: 44px;
-		height: 44px;
-		padding: 10px;
-		background: rgba(255, 255, 255, 0.18);
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		border-radius: 14px;
-		align-items: center;
-		justify-content: center;
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-		z-index: 1201;
+		/* Styles inherited from global rules above */
 	}
 
 	.menu-toggle span {
-		background: #fff;
+		/* Styles inherited from global rules above */
 	}
 
 	.image-info {
@@ -1994,13 +1971,13 @@ footer a:hover {
         position: fixed;
         top: 16px;
         right: 16px;
-        min-width: 44px;
-        min-height: 44px;
-        width: 44px;
-        height: 44px;
+        min-width: 48px;
+        min-height: 48px;
+        width: 48px;
+        height: 48px;
         align-items: center;
         justify-content: center;
-        padding: 10px;
+        padding: 8px;
         background: #ffffff !important;
         border: 1px solid rgba(0,0,0,0.12) !important;
         border-radius: 14px;
@@ -2010,9 +1987,9 @@ footer a:hover {
 
     .menu-toggle span {
         display: block;
-        width: 26px;
+        width: 24px;
         height: 3px;
-        margin: 5px 0;
+        margin: 4px 0;
         background: #000000 !important;
         border-radius: 3px;
         transition: all 0.3s ease;
@@ -2023,18 +2000,6 @@ footer a:hover {
     .menu-toggle.active {
         background: #f7f7f7 !important;
         border-color: rgba(0, 0, 0, 0.12) !important;
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
     }
 
 .whatsapp-icon:hover{
