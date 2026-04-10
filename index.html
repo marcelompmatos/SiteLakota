@@ -35,18 +35,51 @@
   <link rel="icon" type="image/png" href="images/logo.png" />
   <link rel="apple-touch-icon" href="images/logo.png" />
 
+  <!-- Preload imagem crítica -->
+  <link rel="preload" as="image" href="images/home.jpg">
+
   <!-- Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Fonte otimizada -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="tooplate-living-parallax.css" />
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Schema.org para SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Céu Irmão Lakota",
+    "description": "Espaço dedicado ao desenvolvimento espiritual e reconexão com a sabedoria ancestral através de vivências como Kambo e Barras Access.",
+    "url": "https://ceuirmaolakota.com.br/",
+    "logo": "https://ceuirmaolakota.com.br/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Estrada Servidão Silveira Lopes, 5311",
+      "addressLocality": "Mogi das Cruzes",
+      "addressRegion": "SP",
+      "postalCode": "08750-000",
+      "addressCountry": "BR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+55-11-93069-2059",
+      "contactType": "customer service",
+      "availableLanguage": "Portuguese"
+    },
+    "sameAs": [
+      "https://www.instagram.com/ceulakota/",
+      "https://www.facebook.com/pages/Ceu%20Irmao%20Lakota/1839235849656215/"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -84,49 +117,49 @@
     <div class="slider-container" id="slider">
       <div class="slide active" data-index="0">
         <div class="parallax-layer background-layer">
-          <img src="images/home.jpg" alt="Paisagem de montanhas ao amanhecer" />
+          <img src="images/home.jpg" alt="Paisagem de montanhas ao amanhecer" loading="lazy" />
         </div>
       </div>
 
       <div class="slide" data-index="1">
         <div class="parallax-layer background-layer">
-          <img src="images/terceiraImagem.jpg" alt="Caminho pela floresta" />
+          <img src="images/terceiraImagem.jpg" alt="Caminho pela floresta" loading="lazy" />
         </div>
       </div>
 
       <div class="slide" data-index="2">
         <div class="parallax-layer background-layer">
-          <img src="images/casa.jpg" alt="Espaço acolhedor do centro" />
+          <img src="images/casa.jpg" alt="Espaço acolhedor do centro" loading="lazy" />
         </div>
       </div>
 
       <div class="slide" data-index="3">
         <div class="parallax-layer background-layer">
-          <img src="images/quartaImagem.jpg" alt="Pôr do sol tranquilo" />
+          <img src="images/quartaImagem.jpg" alt="Pôr do sol tranquilo" loading="lazy" />
         </div>
       </div>
 
       <div class="slide" data-index="4">
         <div class="parallax-layer background-layer">
-          <img src="images/quintaImagem.jpg" alt="Detalhe de flores naturais" />
+          <img src="images/quintaImagem.jpg" alt="Detalhe de flores naturais" loading="lazy" />
         </div>
       </div>
 
       <div class="slide" data-index="5">
         <div class="parallax-layer background-layer">
-          <img src="images/waterfall-majesty.jpg" alt="Cachoeira serena" />
+          <img src="images/waterfall-majesty.jpg" alt="Cachoeira serena" loading="lazy" />
         </div>
       </div>
 
       <div class="slide" data-index="6">
         <div class="parallax-layer background-layer">
-          <img src="images/wild-encounters.jpg" alt="Trilha entre a natureza" />
+          <img src="images/wild-encounters.jpg" alt="Trilha entre a natureza" loading="lazy" />
         </div>
       </div>
 
       <div class="slide" data-index="7">
         <div class="parallax-layer background-layer">
-          <img src="images/summit-glory.jpg" alt="Vista de topo de montanha" />
+          <img src="images/summit-glory.jpg" alt="Vista de topo de montanha" loading="lazy" />
         </div>
       </div>
 
