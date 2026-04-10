@@ -154,19 +154,29 @@ function initApp() {
         }
     }
 
+    window.openOverlay = openOverlay;
+    window.closeOverlay = closeOverlay;
+
     // Event listeners
     if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            menuToggle.classList.toggle('active');
-            mainNav.classList.toggle('active');
-        });
-
-        // Adicionar listener de toque para mobile
-        menuToggle.addEventListener('touchstart', function(e) {
+        const toggleMenu = function(e) {
             e.preventDefault();
-            menuToggle.classList.toggle('active');
-            mainNav.classList.toggle('active');
+            e.stopPropagation();
+            const isOpen = !mainNav.classList.contains('active');
+            mainNav.classList.toggle('active', isOpen);
+            menuToggle.classList.toggle('active', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        };
+
+        const toggleEvent = window.PointerEvent ? 'pointerdown' : 'click';
+        menuToggle.addEventListener(toggleEvent, toggleMenu);
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
         });
     }
 
@@ -432,4 +442,3 @@ function initApp() {
         });
     }
 }
-});
